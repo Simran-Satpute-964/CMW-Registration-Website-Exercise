@@ -1,0 +1,15 @@
+@use "variables";
+
+.footer {
+    background-color: variables.$dark-grey;
+    height: 7vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 63vh;
+}
+
+.footer-text {
+    color: variables.$text-color;
+}

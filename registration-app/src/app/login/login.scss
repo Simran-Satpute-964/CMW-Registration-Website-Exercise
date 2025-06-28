@@ -1,0 +1,58 @@
+@use "variables";
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 32rem;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid variables.$dark-grey;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    color: variables.$text-color;
+
+    label {
+        font-weight: 600;
+        margin: 0 0 0.25rem 0;
+    }
+}
+
+.actions {
+    display: flex;
+    align-self: flex-end;
+    margin: 0 1rem 1rem;
+
+    button {
+        height: 2rem;
+        width: 4rem;
+        border-radius: 0.25rem;
+        background-color: variables.$dark-blue;
+        color: #FFFFFF;
+        border-color: variables.$light-blue;
+    }
+}
+
+#password, input:-internal-autofill-selected, input:focus{
+    border-radius: 2px;
+    border: 2px solid variables.$light-grey;
+    height: 1.8rem;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+.ng-invalid.ng-touched {
+    background-color: variables.$light-red !important; /* Sets text color to red */
+    border-color: variables.$dark-red !important; /* Sets border color to red */
+}

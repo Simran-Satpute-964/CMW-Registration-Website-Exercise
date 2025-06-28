@@ -1,0 +1,51 @@
+@use "variables";
+
+.stepper-container {
+    display: flex;
+    justify-content: center;
+    color: variables.$text-color;
+}
+
+mat-stepper {
+    width: 32rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    color: variables.$text-color;
+
+    label {
+        font-weight: 600;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .invalid-label {
+        color: variables.$dark-red;
+    }
+}
+
+input, input:-internal-autofill-selected, input:focus{
+    border-radius: 2px;
+    border: 2px solid variables.$light-grey;
+    height: 1.8rem;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+input.ng-invalid.ng-touched {
+    background-color: variables.$light-red !important; /* Sets text color to red */
+    border-color: variables.$dark-red !important; /* Sets border color to red */
+}
+
+.margin-top {
+    margin-top: 1em;
+}
+
+.form-field-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+}

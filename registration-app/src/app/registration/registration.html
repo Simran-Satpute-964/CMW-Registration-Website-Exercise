@@ -1,0 +1,63 @@
+<div class="stepper-container">
+    <mat-stepper [linear]="isLinear" labelPosition="bottom" #stepper>
+        <mat-step [completed]="true" [editable]="false">
+            <ng-template matStepLabel>REGISTER</ng-template>
+        </mat-step>
+        <mat-step [stepControl]="formGroup" label="SUBMIT INFO">
+
+            <form [formGroup]="formGroup">
+
+                <p>Please fill in the following required information.</p>
+
+                <div class="form-field">
+                    <label for="firstName" [class.invalid-label]="getControlValidity('firstName')">First Name: *</label>
+                    <input id="firstName" type="text" formControlName="firstName" />
+                </div>
+
+                <div class="form-field margin-top">
+                    <label for="lastName" [class.invalid-label]="getControlValidity('lastName')">Last Name: *</label>
+                    <input id="lastName" type="text" formControlName="lastName" />
+                </div>
+
+                <div class="form-field margin-top">
+                    <label for="state" [class.invalid-label]="getControlValidity('state')">State: *</label>
+
+                    <select class="custom-select" (change)="changeState($event)" formControlName="state">
+                        @for (stateName of states; track stateName) {
+                            <option [value]="stateName">{{stateName}}</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-field margin-top">
+                    <p>Please provide your email address. <br>All meeting correspondence will be sent via email.</p>
+                    <label for="email" [class.invalid-label]="getControlValidity('email')">Email: *</label>
+                    <input id="email" type="text" formControlName="email" />
+                </div>
+
+                <div class="form-field margin-top">
+                    <label for="confirmEmail" [class.invalid-label]="getControlValidity('confirmEmail')">Confirm Email: *</label>
+                    <input id="confirmEmail" type="text" formControlName="confirmEmail" />
+                </div>
+
+                <div class="form-field-checkbox">
+                    <input id="subscribe" type="checkbox" formControlName="subscribe" />
+                    <label for="subscribe">Subscribe to Newsletter</label>
+                </div>
+
+                <div>
+                    <button matStepperNext (click)="submitInfo()">Next</button>
+                </div>
+
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>COMPLETE</ng-template>
+            <p>You are now done.</p>
+            <div>
+            <button matButton matStepperPrevious>Back</button>
+            <button matButton (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>

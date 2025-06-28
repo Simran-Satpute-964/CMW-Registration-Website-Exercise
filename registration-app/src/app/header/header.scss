@@ -1,0 +1,29 @@
+@use 'variables';
+
+.header {
+    background-color: #FFFFFF;
+    height: 15vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid variables.$dark-grey;
+}
+
+.logo {
+    height: 80%;
+    width: 40%;
+}
+
+.title {
+    background-color: variables.$light-blue;
+    height: 9vh;
+    margin: 6vh 0 6vh 0vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    color: #F4FCFE;
+}

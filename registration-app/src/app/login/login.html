@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="inner-container">
+        <div class="form-field">
+            <p>Please enter the case sensitive password from your official invitation.</p>
+            <label for="password">Password:</label>
+            <input id="password" type="text" [formControl]="password"/>
+
+            @if(!password.hasError('incorrect') && password.invalid && password.touched) {
+                <div class="error">
+                    Incorrect password.
+                </div>
+            }
+
+            @if(password.hasError('incorrect') && password.touched) {
+                <div class="error">
+                    Incorrect password. Try again.
+                </div>
+            }
+        </div>
+        <div class="actions">
+            <button type="button" (click)="validatePassword()">Login</button>
+        </div>
+    </div>
+</div>
