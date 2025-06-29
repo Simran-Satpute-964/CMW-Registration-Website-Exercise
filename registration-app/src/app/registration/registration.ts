@@ -30,6 +30,7 @@ export class RegistrationComponent {
     states = ['MH', 'PJ', 'RJ', 'TN'];
 
     @ViewChild('stepper') stepper!: MatStepper;
+    @ViewChild('secondStep') secondStep!: any;
 
     formGroup = this._formBuilder.group({
         firstName: ['', [Validators.required]],
@@ -81,6 +82,9 @@ export class RegistrationComponent {
             this.http.post(api, request, {headers: headers, params: params}).subscribe(result => {
                 console.log(result);
             });
+            this.stepper.selectedIndex = 2;
+            this.secondStep.completed = true;
+            this.secondStep.editable = false;
         }
     }
 }

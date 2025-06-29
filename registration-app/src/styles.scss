@@ -26,5 +26,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-horizontal-stepper-header-container {
-    background-color: #dedede;
+  background-color: #dedede;
+}
+
+.mat-horizontal-content-container {
+  border: 2px solid variables.$light-grey;
+}
+
+.mat-step-icon {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+.mat-step-icon-state-done, .mat-step-icon-selected {
+  background-color: variables.$dark-blue !important;
+  color: #FFFFFF !important;
 }

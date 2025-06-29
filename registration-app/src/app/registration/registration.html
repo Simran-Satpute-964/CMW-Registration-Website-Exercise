@@ -3,7 +3,7 @@
         <mat-step [completed]="true" [editable]="false">
             <ng-template matStepLabel>REGISTER</ng-template>
         </mat-step>
-        <mat-step [stepControl]="formGroup" label="SUBMIT INFO">
+        <mat-step [stepControl]="formGroup" label="SUBMIT INFO" #secondStep>
 
             <form [formGroup]="formGroup">
 
@@ -22,7 +22,7 @@
                 <div class="form-field margin-top">
                     <label for="state" [class.invalid-label]="getControlValidity('state')">State: *</label>
 
-                    <select class="custom-select" (change)="changeState($event)" formControlName="state">
+                    <select id="state" class="custom-select" (change)="changeState($event)" formControlName="state">
                         @for (stateName of states; track stateName) {
                             <option [value]="stateName">{{stateName}}</option>
                         }
@@ -45,7 +45,7 @@
                     <label for="subscribe">Subscribe to Newsletter</label>
                 </div>
 
-                <div>
+                <div class="action-button">
                     <button matStepperNext (click)="submitInfo()">Next</button>
                 </div>
 
@@ -53,10 +53,9 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>COMPLETE</ng-template>
-            <p>You are now done.</p>
-            <div>
-            <button matButton matStepperPrevious>Back</button>
-            <button matButton (click)="stepper.reset()">Reset</button>
+            <div class="confirmation-box">
+                <p class="confirmation-header">Thank you for registering!</p>
+                <p>You should recieve a confirmation email momentarily containing additional details.</p>
             </div>
         </mat-step>
     </mat-stepper>

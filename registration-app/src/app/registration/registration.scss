@@ -23,6 +23,11 @@ mat-stepper {
     .invalid-label {
         color: variables.$dark-red;
     }
+
+    #state {
+        height: 1.8rem;
+        width: 25%;
+    }
 }
 
 input, input:-internal-autofill-selected, input:focus{
@@ -48,4 +53,26 @@ input.ng-invalid.ng-touched {
     display: flex;
     align-items: center;
     margin-top: 0.5em;
+}
+
+.action-button {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        height: 2rem;
+        width: 4rem;
+        border-radius: 0.25rem;
+        background-color: variables.$dark-blue;
+        color: #FFFFFF;
+        border-color: variables.$light-blue;
+    }
+}
+
+.confirmation-box {
+    color: variables.$text-color;
+    .confirmation-header {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
 }
