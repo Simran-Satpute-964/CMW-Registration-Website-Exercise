@@ -38,6 +38,10 @@
                 <div class="form-field margin-top">
                     <label for="confirmEmail" [class.invalid-label]="getControlValidity('confirmEmail')">Confirm Email: *</label>
                     <input id="confirmEmail" type="text" formControlName="confirmEmail" />
+
+                    @if(formGroup.hasError('emailMissmatch')) {
+                        <span class="error">Confirm email should match with email entered.</span>
+                    }
                 </div>
 
                 <div class="form-field-checkbox">

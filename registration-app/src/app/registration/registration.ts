@@ -1,5 +1,5 @@
 import { Component, inject, ViewChild } from "@angular/core";
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -39,7 +39,7 @@ export class RegistrationComponent {
         email: ['', [Validators.required, Validators.email]],
         confirmEmail: ['', [Validators.required, Validators.email]],
         subscribe: [false]
-    });
+    }, { validators: this.emailMissmatchValidator });
 
     constructor() {
         this.headerDetailService.pageTitle = "CONTACT INFORMATION";
@@ -50,6 +50,13 @@ export class RegistrationComponent {
         setTimeout(() => {
             this.stepper.selectedIndex = 1;
         });
+    }
+
+    emailMissmatchValidator(group: AbstractControl): ValidationErrors | null {
+        const email = group.get('email')?.value;
+        const confirmEmail = group.get('confirmEmail')?.value;
+
+        return email && confirmEmail && email !== confirmEmail ? { emailMissmatch: true } : null;
     }
 
     getControlValidity(control: string) {
