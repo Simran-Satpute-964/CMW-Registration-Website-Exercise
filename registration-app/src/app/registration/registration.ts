@@ -95,6 +95,9 @@ export class RegistrationComponent {
                 this.showSpinner = false;
                 console.log(result);
                 this.stepper.next();
+                this.stepper.selectedIndex = 2;
+                this.secondStep.completed = true;
+                this.secondStep.editable = false;
             },
             (error) => {
                 this.showSpinner = false;
