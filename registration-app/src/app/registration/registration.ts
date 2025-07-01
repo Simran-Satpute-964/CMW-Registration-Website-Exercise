@@ -6,7 +6,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatStepper, MatStepperModule } from "@angular/material/stepper";
 import { HeaderDetailService } from "../shared/services/header-detail.service";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { firstValueFrom, map } from "rxjs";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @Component({
     selector: "app-registration",
@@ -18,7 +18,8 @@ import { firstValueFrom, map } from "rxjs";
         MatButtonModule,
         MatStepperModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatProgressSpinnerModule
     ]
 })
 export class RegistrationComponent {
@@ -28,6 +29,8 @@ export class RegistrationComponent {
 
     isLinear = true;
     states = ['MH', 'PJ', 'RJ', 'TN'];
+    showServerError = false;
+    showSpinner = false;
 
     @ViewChild('stepper') stepper!: MatStepper;
     @ViewChild('secondStep') secondStep!: any;
@@ -72,6 +75,7 @@ export class RegistrationComponent {
 
     submitInfo() {
         if (this.formGroup.valid) {
+            this.showSpinner = true;
             const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '**');
             let params = new HttpParams();
             params = params.set('key', 'simransatpute96@gmail.com');
@@ -86,12 +90,17 @@ export class RegistrationComponent {
 
             const api = "/api/registrations";
             
+            this.showServerError = false;
             this.http.post(api, request, {headers: headers, params: params}).subscribe(result => {
+                this.showSpinner = false;
                 console.log(result);
+                this.stepper.next();
+            },
+            (error) => {
+                this.showSpinner = false;
+                this.showServerError = true;
+                console.log(error);
             });
-            this.stepper.selectedIndex = 2;
-            this.secondStep.completed = true;
-            this.secondStep.editable = false;
         }
     }
 }

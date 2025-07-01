@@ -50,8 +50,14 @@
                 </div>
 
                 <div class="action-button">
-                    <button matStepperNext (click)="submitInfo()">Next</button>
+                    <button (click)="submitInfo()">Next</button>
                 </div>
+
+                @if(showServerError) {
+                    <div style="display: flex">
+                        <span class="error">We're having trouble processing your request right now. Hang tight!</span>
+                    </div>
+                }
 
             </form>
         </mat-step>
@@ -64,3 +70,9 @@
         </mat-step>
     </mat-stepper>
 </div>
+
+@if(showSpinner) {
+    <div class="overlay">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+}
